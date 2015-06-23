@@ -37,10 +37,15 @@
   "devDependencies": {
     "mocha": "*",
     "chai": "*",
-    "grunt": "^0.4.5",
+    "grunt": "~0.4.5",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-watch": "^0.6.1",
-    "grunt-mocha-test": "^0.11.0"
-
+    "grunt-mocha-test": "^0.11.0",
+    "grunt-mkdir": "~0.1.2"
+  },
+  "scripts": {
+    "start": "node run.js",
+    "//": "you may need to run npm install in the modules/node-ip folder separately",
+    "preinstall": "git clone https://github.com/indutny/node-ip.git modules/node-ip"
   }
 }

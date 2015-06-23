@@ -7,6 +7,12 @@ The HomeGrown Marine Boat Computer is a platform for processing and interacting 
 It is designed using [Node.js](http://nodejs.org), which allows for a really flexible and light weight webserver.  And, Node's event based architecture also works really well with the nature of sensor data.  Modules that process and consume event data can cleanly subscribe to relavent events, such as new wind or gps messages.
 
 
+###Data Sources:###
+
+- *serial data*: reads serial data from the USB port from the connected instruments, such as GPS, compass and speedo.
+
+- *UDP*: reads NMEA sentences from UDP stream. If your boat is already equipped with WiFi and instruments that broadcast NMEA sentences over UDP, this comes in handy as you don't need to then physically connect the instruments to the Boat Computer.
+
 ###Included Apps:###
 
 - *docs*: store racing related docs in the boat computer, so you have access to them on the water
@@ -88,6 +94,45 @@ boat_data is the interface to the boat's NMEA 0183 instrument system.  It can ei
 - 'data:_type_' - receive only specific types of data.  For example, receive only GPS data by subscribing to 'data:rmc'
 
 sending data to other apps and the instrument system is done by calling ```boat_data.broadcast(message,data)```.  If only message is specified, it will be sent only to the serial bus.  If data is specified, as a json object, it will be broadcast to the rest of the apps on your system.  If an encoder is specified for the data type, it will also be encoded into a NMEA sentence and broadcast over the serial bus.
+
+## Preparing Raspberry Pi
+- NOOB distribution of Raspberry Ubuntu OS from https://www.raspberrypi.org/downloads/
+- install the OS on the memorycard and boot the Raspberry
+- configure to boot on terminal
+	- sudo raspi-config
+- run OS updates
+	- sudo apt-get update
+	- sudo apt-get upgrade -y
+- download and install node.js (must use version 0.10.16 to work), otherwise there may be problems with the serialport module, as it is compiled from the source.
+- install serial port
+	- sudo npm install serialport -g
+	- this is the most error prone phase in the process. If you 
+
+- optional, but recommended
+	- Delete unused software packages, in reverse order of /var/log/apt/history.log, including automatically installed packages:
+		- apt-get purge --auto-remove scratch
+		- apt-get purge --auto-remove debian-reference-en dillo idle3 python3-tk idle python-pygame python-tk
+		- apt-get purge --auto-remove lightdm gnome-themes-standard gnome-icon-theme raspberrypi-artwork
+		- apt-get purge --auto-remove gvfs-backends gvfs-fuse desktop-base lxpolkit netsurf-gtk zenity xdg-utilse
+		- apt-get purge --auto-remove mupdf gtk2-engines alsa-utils  lxde lxtask menu-xdg gksu
+		- apt-get purge --auto-remove midori xserver-xorg xinit xserver-xorg-video-fbdev
+		- apt-get purge --auto-remove dbus-x11 libx11-6 libx11-data libx11-xcb1 x11-common x11-utils
+		- apt-get purge --auto-remove lxde-icon-theme gconf-service gconf2-common
+
+	- make your life easier by installing and configuring samba server (fileshare) to Raspberry. 
+		- wget https://dl.dropbox.com/s/wjlshn22z80rzpv/simplesamba.sh
+		- sudo bash simplesamba.sh
+
+
+## Installation
+- install dependencies 
+	- dependencies: grunt
+	- node install
+	- 
+	- make directories
+	- explain / edit config.json
+- TODO: how to run dev vs. prod 
+- TODO: install and configure forever
 
 ## Next Steps
 
