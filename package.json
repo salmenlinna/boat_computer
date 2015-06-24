@@ -45,7 +45,6 @@
   },
   "scripts": {
     "start": "node run.js",
-    "//": "you may need to run npm install in the modules/node-ip folder separately",
-    "preinstall": "git clone https://github.com/indutny/node-ip.git modules/node-ip"
+    "preinstall" : "bower install https://github.com/indutny/node-ip.git"
   }
 }

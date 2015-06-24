@@ -1,5 +1,5 @@
 node_modules/*
 config.js
 config.json
-modules/node-ip/*
+bower-components/*
 www/lib

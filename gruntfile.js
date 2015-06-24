@@ -28,6 +28,9 @@ module.exports = function(grunt) {
     watch: {
       files: ['<%= jshint.files %>'],
       tasks: ['jshint', 'mochaTest']
+    },
+    configureBoatComputer: {
+      tasks: ['configureBoatComputer']
     }
   });
 
@@ -37,5 +40,18 @@ module.exports = function(grunt) {
 
   // Default task(s).
   grunt.registerTask('default', ['jshint','mochaTest']);
+
+  // Installs directories and files for race data
+  grunt.registerTask('configureBoatComputer', 'Creates necessary directories', function(arg1) {
+    if (arguments.length === 0) {
+      grunt.log.writeln(this.name + ": Specify config file as argument");
+      return 1;
+    } 
+    config = grunt.file.readJSON(arg1);
+    grunt.log.writeln('settingsFile: ' +  config.settingsFile);
+//    grunt.log.writeln('Logdir: ' +  getString("logs:dataDir"));
+//    grunt.log.writeln('settingsFile: ' +  config.development.logs('dataDir');
+
+  });
 
 };

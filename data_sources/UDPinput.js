@@ -7,7 +7,7 @@ var util = require('util');
 var winston = require('winston');
 var _ = require('lodash');
 var nmea = require('../modules/nmea');
-var ip = require('node-ip');
+var ip = require('../bower_components/node-ip');
 var EventEmitter = require('events').EventEmitter;
 var dgram = require('dgram');
 

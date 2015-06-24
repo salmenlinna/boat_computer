@@ -1,0 +1,15 @@
+{
+  "name": "node-ip",
+  "homepage": "https://github.com/indutny/node-ip",
+  "version": "0.3.3",
+  "_release": "0.3.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.3.3",
+    "commit": "6fbb3a613a25f132a28e03df0d3154c8c525fb82"
+  },
+  "_source": "https://github.com/indutny/node-ip.git",
+  "_target": "~0.3.3",
+  "_originalSource": "https://github.com/indutny/node-ip.git",
+  "_direct": true
+}
