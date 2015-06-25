@@ -1,4 +1,8 @@
 module.exports = function(grunt) {
+var fs = require('fs');
+var touch = require("touch");
+var pth = require("path");
+var mkdirp = require("mkdirp");
 
   // Project configuration.
   grunt.initConfig({
@@ -48,9 +52,52 @@ module.exports = function(grunt) {
       return 1;
     } 
     config = grunt.file.readJSON(arg1);
-    grunt.log.writeln('settingsFile: ' +  config.settingsFile);
-//    grunt.log.writeln('Logdir: ' +  getString("logs:dataDir"));
-//    grunt.log.writeln('settingsFile: ' +  config.development.logs('dataDir');
+
+    // dig the values form the config files
+    var settingsFile = config.settingsFile;
+    var winstonLogs = config['winston:logDir'];
+    var logsData = config['logs:dataDir'];
+    var devData = config.development.dataSources[0].file;
+    var devLogData = config.development['logs:dataDir'];
+ 
+    // create the files and directories
+    createDirFile (settingsFile);
+    createDir (winstonLogs);
+    createDir (logsData);
+    createDirFile (devData);
+    createDir (devLogData);
+
+    function createDirFile (full_path){
+      file = pth.basename(full_path);
+      path = pth.dirname(full_path);
+
+      if (!path) {return 1}; // something went wrong
+      var message = "";
+      if (!fs.existsSync(path)){
+         mkdirp.sync(path);
+         message += path;
+      }
+      if (file && !fs.existsSync(full_path)) {
+        touch.sync(full_path);
+        message += file;
+      } 
+      if (message != ""){
+        grunt.log.writeln("Creating " + path + '/' + file);
+      } else {
+        grunt.log.writeln(path + " already exists");
+      } 
+    }
+
+   function createDir (path){
+      if (!path) {return 1}; // something went wrong
+
+      if (!fs.existsSync(path)){
+        mkdirp.sync(path);
+        grunt.log.writeln("Creating " + path);
+      } else {
+        grunt.log.writeln(path + " already exists");
+      } 
+    }
 
   });
 

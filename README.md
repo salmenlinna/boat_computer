@@ -125,17 +125,21 @@ sending data to other apps and the instrument system is done by calling ```boat_
 
 
 ## Installation
-- install dependencies 
-	- dependencies: grunt
-	- node install
-	- 
-	- make directories
-	- explain / edit config.json
+# Prerequisities
+	- install grunt
+	- install bower 
+
+# installation and configuration
+	- modify config.json, if needed
+	- npm install
+
 - TODO: how to run dev vs. prod 
 - TODO: install and configure forever
 
+## Running
+	- npm start
+
 ## Next Steps
 
-- better installation scripts and instructions
 - support for NMEA 2000 and [signal k](https://signalk.github.io)
 - more apps
