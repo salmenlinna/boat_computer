@@ -122,14 +122,13 @@ sending data to other apps and the instrument system is done by calling ```boat_
 	- make your life easier by installing and configuring samba server (fileshare) to Raspberry. 
 		- wget https://dl.dropbox.com/s/wjlshn22z80rzpv/simplesamba.sh
 		- sudo bash simplesamba.sh
-
-
+		
 ## Installation
-# Prerequisities
+### Prerequisities
 	- install grunt
 	- install bower 
 
-# installation and configuration
+### installation and configuration
 	- modify config.json, if needed
 	- npm install
 
